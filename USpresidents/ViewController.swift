@@ -90,9 +90,9 @@ class ViewController: UIViewController {
     
     
         func alertCorrect () {
-            let alert = UIAlertController(title: "Correct!!", message: "You are good. Here is the fact: \(AnswerExplanation().list[questionIndexNumber])", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Correct!", message: "Great job. Here is the fact: \(AnswerExplanation().list[questionIndexNumber])", preferredStyle: .alert)
             
-            let action = UIAlertAction(title: "Next question.", style: .default) { (UIAlertAction) in
+            let action = UIAlertAction(title: "Next ->", style: .default) { (UIAlertAction) in
                         self.nextQuestion()
                     }
             alert.addAction(action)
@@ -101,7 +101,7 @@ class ViewController: UIViewController {
         
     
         func alertWrong () {
-            let alert = UIAlertController(title: "Wrong!!", message: "Nope! Here is the answer: \(AnswerExplanation().list[questionIndexNumber])", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Nope!", message: "Oops! Here is the answer: \(AnswerExplanation().list[questionIndexNumber])", preferredStyle: .alert)
             
             let action = UIAlertAction(title: "Next question.", style: .default) { (UIAlertAction) in
                 self.nextQuestion()
@@ -113,13 +113,13 @@ class ViewController: UIViewController {
 
 
 
-
+    //gets called when a user just tap on a question
     func checkAnswer () {
             if questionIndexNumber < QuestionBank().list.count {
             
                 if pickedAnswer == QuestionBank().list[questionIndexNumber].answer {
                 print ("Yeah!!!")
-                score = score + 1
+                score = score + 1 //increase the question index
                 alertCorrect()
                 }
                     
@@ -132,6 +132,7 @@ class ViewController: UIViewController {
             }
         }
 
+    //dictates what happen when we tap "next"
      func nextQuestion () {
             if questionIndexNumber < QuestionBank().list.count {
             questionLabel.text = QuestionBank().list[questionIndexNumber].questionText
